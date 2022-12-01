@@ -7,53 +7,15 @@ import { collection, query, onSnapshot } from 'firebase/firestore';
 import { setItem } from '../redux/rooms/roomsReducer';
 import { useDispatch } from 'react-redux';
 
-const data = [
-  {
-    id: 201,
-    title: "D-201",
-  },
-  {
-    id: 202,
-    title: "D-202",
-  },
-  {
-    id: 208,
-    title: "D-208",
-  },
-  {
-    id: 204,
-    title: "D-204",
-  },
-  {
-    id: 101,
-    title: "D-101",
-  },
-  {
-    id: 102,
-    title: "D-102",
-  },
-  {
-    id: 104,
-    title: "D-104",
-  },
-  {
-    id: 105,
-    title: "D-105",
-  },
-  {
-    id: 106,
-    title: "D-106",
-  },
-  {
-    id: 108,
-    title: "D-108",
-  },
-  {
-    id: 107,
-    title: "D-107",
-  },
-];
-
+const compare = (a,b) => {
+  if ( a.name < b.name ){
+    return -1;
+  }
+  if ( a.name > b.name ){
+    return 1;
+  }
+  return 0;
+}
 
 const Rooms = () => {
   const navigation = useNavigation();
@@ -69,10 +31,11 @@ const Rooms = () => {
         devices: docSnapshot.data().devices,
         automation: docSnapshot.data().automation,
       }))
-      setRooms(rooms);
-      dispatch(setItem(rooms));
+      const sorted = [...rooms].sort(compare);
+      setRooms(sorted);
+      dispatch(setItem(sorted));
     });
-    getRooms().then(rooms => setRooms(rooms));
+    getRooms().then(rooms => setRooms([...rooms].sort(compare)));
   },[setRooms])
   return (
     <FlatList 

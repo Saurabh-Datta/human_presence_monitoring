@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { Button, Icon, Input } from '@rneui/themed';
+import { Icon, Input } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { addRoom } from '../firebaseConfig';
@@ -16,7 +16,6 @@ const AddRoomScreen = () => {
         </TouchableOpacity>
         <Text style={styles.container_navigation_text}>Add Room</Text>
       </View>
-      <Text style={styles.container_text}>Enter the room name below, an ID will automatically be generated for it which you can view in the room description page.</Text>
       <View style={styles.container_form}>
         <Input placeholder='Room Name' defaultValue={roomName} onChangeText={text=>setRoomName(text)}></Input>
         {roomName===""?<Text style={styles.container_form_error}>This field is required.*</Text>:null}
@@ -54,13 +53,8 @@ const styles = StyleSheet.create({
     marginTop: 100,
     alignItems: 'center',
   },
-  container_text: {
-    marginTop: 40,
-    marginLeft: 7,
-    color: '#83ACC5'
-  },
   container_form_add_button: {
-    width: 50,
+    width: 150,
     backgroundColor: '#2089DC',
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "human_presence_monitor",
+    "name": "Human Presence Monitor",
     "slug": "human_presence_monitor",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.saurabhdatta.human_presence_monitor"
